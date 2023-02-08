@@ -22,6 +22,7 @@ jobs:
       ibmid_client_id: ${{ secrets.STAGING_IBMID_CLIENT_ID }}
       ibmid_client_secret: ${{ secrets.STAGING_IBMID_CLIENT_SECRET }}
       mongodb_uri: ${{ secrets.STAGING_MONGODB_URI }}
+      textbook_repo_clone_key: ${{ secrets.TEXTBOOK_REPO_CLONE_KEY }}
 
   teardown:
     # this job requires secrets, which cannot be shared with forks
