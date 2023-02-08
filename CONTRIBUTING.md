@@ -89,6 +89,10 @@ Next, update the table of contents file by running:
 python3 scripts/make_toc.py <version-name>
 ```
 
+If the version you've added is the new latest version (and should be the
+default content displayed) update `LATEST_TEXTBOOK_VERSION` in
+`server/utilities.ts` to your `<version-name>` string.
+
 You should now be good to go.
 
 ## Contributing code
