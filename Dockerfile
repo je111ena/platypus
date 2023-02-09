@@ -10,7 +10,7 @@ ENV NODE_OPTIONS --max-old-space-size=4096
 WORKDIR /usr/app
 
 RUN eval `ssh-agent -s`
-RUN ssh-add - <<< "${TEXTBOOK_REPO_CLONE_KEY}"
+RUN ssh-add - <<< ${TEXTBOOK_REPO_CLONE_KEY}
 RUN git submodule update --init --recursive
 
 
