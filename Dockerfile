@@ -11,9 +11,7 @@ WORKDIR /usr/app
 
 RUN eval `ssh-agent -s`
 RUN ssh-add - <<< "${TEXTBOOK_REPO_CLONE_KEY}"
-RUN git config --global url."git@github.com:".insteadOf "https://github.com"
 RUN git submodule update --init --recursive
-RUN git config --global --remove-section url."git@github.com:"
 
 
 
