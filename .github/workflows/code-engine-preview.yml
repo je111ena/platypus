@@ -124,7 +124,7 @@ jobs:
           eval `ssh-agent -s`
           ssh-add - <<< "${{ secrets.textbook_repo_clone_key }}"
           git config --global url."git@github.com:".insteadOf "https://github.com"
-          git submodule update --init --recursive
+          git submodule update --init --recursive --depth 1
           git config --global --remove-section url."git@github.com:"
 
       - name: Build and push to IBM registry for platypus
