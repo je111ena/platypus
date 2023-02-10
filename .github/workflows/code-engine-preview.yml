@@ -114,6 +114,15 @@ jobs:
           cache-from: type=registry,ref=${{ env.DOCKER_IMAGE_TAG }}
           cache-to: type=inline
 
+      - name: Clone Qiskit/textbook submodule for platypus
+        if: github.repository == 'Qiskit/platypus' && "${{ secrets.textbook_repo_clone_key }}"
+        run: |
+          eval `ssh-agent -s`
+          ssh-add - <<< "${{ secrets.textbook_repo_clone_key }}"
+          git config --global url."git@github.com:".insteadOf "https://github.com"
+          git submodule update --init --recursive
+          git config --global --remove-section url."git@github.com:"
+
       - name: Build and push to IBM registry for platypus
         if: github.repository == 'Qiskit/platypus'
         uses: docker/build-push-action@v3
@@ -126,8 +135,6 @@ jobs:
             IBMID_CLIENT_ID=${{ secrets.ibmid_client_id }}
             IBMID_CLIENT_SECRET=${{ secrets.ibmid_client_secret }}
             MONGODB_URI=${{ secrets.mongodb_uri }}
-          ssh:
-            - "${{ secrets.textbook_repo_clone_key }}"
 
       - name: Determine Code Engine project and app status
         id: ce_command_choice
