@@ -119,7 +119,7 @@ jobs:
           cache-to: type=inline
 
       - name: Clone Qiskit/textbook submodule for platypus
-        if: github.repository == 'Qiskit/platypus' && ${{ inputs.clone_textbook_repo == 'true' }}
+        if: inputs.clone_textbook_repo == 'true'
         run: |
           eval `ssh-agent -s`
           ssh-add - <<< "${{ secrets.textbook_repo_clone_key }}"
