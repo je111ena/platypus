@@ -36,6 +36,7 @@ on:
       clone_textbook_repo:
         default: ''
         required: false
+        type: string
     secrets:
       ibmcloud_account:
         required: true
