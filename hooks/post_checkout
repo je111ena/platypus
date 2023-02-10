@@ -1,0 +1,5 @@
+#!/bin/bash
+ARG TEXTBOOK_REPO_CLONE_KEY
+RUN eval `ssh-agent -s`
+RUN ssh-add - <<< ${TEXTBOOK_REPO_CLONE_KEY}
+RUN git submodule update --init --recursive

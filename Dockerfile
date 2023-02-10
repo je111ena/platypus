@@ -9,12 +9,6 @@ ENV NODE_OPTIONS --max-old-space-size=4096
 
 WORKDIR /usr/app
 
-RUN eval `ssh-agent -s`
-RUN ssh-add - <<< ${TEXTBOOK_REPO_CLONE_KEY}
-RUN git submodule update --init --recursive
-
-
-
 COPY converter/textbook-converter/requirements.txt converter/textbook-converter/
 # py3-pyzmq is needed by pyyaml but pip is not able to compile it
 RUN apk add --no-cache g++ linux-headers python3 python3-dev py3-pip py3-pyzmq
