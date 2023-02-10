@@ -131,6 +131,7 @@ jobs:
         if: github.repository == 'Qiskit/platypus'
         uses: docker/build-push-action@v3
         with:
+          context: .
           push: true
           tags: ${{ env.DOCKER_IMAGE_TAG }}
           cache-from: type=registry,ref=${{ env.DOCKER_IMAGE_TAG }}
