@@ -16,6 +16,7 @@ jobs:
     with:
       code_engine_project: platypus-preview
       docker_image_name: platypus
+      clone_textbook_repo: 'true'
     secrets:
       ibmcloud_account: ${{ secrets.IBMCLOUD_ACCOUNT }}
       ibmcloud_api_key: ${{ secrets.IBMCLOUD_API_KEY }}
