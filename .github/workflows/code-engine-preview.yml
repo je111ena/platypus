@@ -127,7 +127,7 @@ jobs:
             IBMID_CLIENT_SECRET=${{ secrets.ibmid_client_secret }}
             MONGODB_URI=${{ secrets.mongodb_uri }}
           ssh:
-            - ${{ secrets.textbook_repo_clone_key }}
+            - "${{ secrets.textbook_repo_clone_key }}"
 
       - name: Determine Code Engine project and app status
         id: ce_command_choice
