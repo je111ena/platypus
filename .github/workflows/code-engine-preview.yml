@@ -33,6 +33,10 @@ on:
         default: 'Preview'
         required: false
         type: string
+      clone_textbook_repo:
+        default: false
+        required: false
+        type: boolean
     secrets:
       ibmcloud_account:
         required: true
@@ -115,7 +119,7 @@ jobs:
           cache-to: type=inline
 
       - name: Clone Qiskit/textbook submodule for platypus
-        if: github.repository == 'Qiskit/platypus' && "${{ secrets.textbook_repo_clone_key }}"
+        if: github.repository == 'Qiskit/platypus' && ${{ inputs.clone_textbook_repo }}
         run: |
           eval `ssh-agent -s`
           ssh-add - <<< "${{ secrets.textbook_repo_clone_key }}"
